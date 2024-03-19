@@ -19,14 +19,19 @@ client.npf_consumption_off()
 # alternate tags
 
 time_pointer = int(time.time())
-# time_pointer = int(datetime.strptime("2022-04-13 00:10:15", "%Y-%m-%d %H:%M:%S").timestamp())
+
+time_pointer = int(
+    datetime.strptime("2010-08-30 11:17:00", "%Y-%m-%d %H:%M:%S").timestamp()
+)
 i = 0
 
 while True:  # try 4 times
     try:
         print("collecting posts at time " + str(datetime.fromtimestamp(time_pointer)))
         posts = client.tagged(tag="cottagecore", before=time_pointer)
-        time_pointer = posts[19]["timestamp"]
+        print(str(len(posts)) + " posts collected...")
+        # print([str(datetime.fromtimestamp(post["timestamp"])) for post in posts])
+        time_pointer = posts[-1]["timestamp"]
         with open(
             "/home/mel/Desktop/repos/cottagecore_tradfem_pipeline/pickle_files_collection2/"
             + str(time_pointer)
