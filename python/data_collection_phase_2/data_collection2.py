@@ -23,7 +23,9 @@ client.npf_consumption_off()
 
 time_pointer = int(time.time())
 
-# time_pointer = int(datetime.strptime("2010-08-30 11:17:00", "%Y-%m-%d %H:%M:%S").timestamp())
+time_pointer = int(
+    datetime.strptime("2023-07-16 14:59:02", "%Y-%m-%d %H:%M:%S").timestamp()
+)
 i = 0
 
 while True:  # try 4 times
