@@ -1,0 +1,17 @@
+"0","cascades <- read_csv(""cascades.csv"")%>%"
+"0","  mutate(time_posted = as.character(time_posted))%>%"
+"0","  mutate(time_posted = as.POSIXct(time_posted,tz=Sys.timezone()))%>%"
+"0","  select(""blog_name"", ""time_posted"", ""cascade_id"")"
+"2","New names:"
+"2","[1mRows: [22m[34m8853[39m [1mColumns: [22m[34m4[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m─────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m  (2): blog_name, cascade_id
+[32mdbl[39m  (1): ...1
+[34mdttm[39m (1): time_posted"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
+"0","blog_names <- cascades[""blog_name""]"
+"0",""
+"0","tag_cascades <- as_cascade_long(cascades, cascade_node_name = ""blog_name"", event_time = ""time_posted"")"

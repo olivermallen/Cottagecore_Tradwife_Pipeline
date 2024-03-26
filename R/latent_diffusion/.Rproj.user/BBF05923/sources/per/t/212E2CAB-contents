@@ -1,0 +1,45 @@
+---
+title: "latent_diffusion_networks"
+author: "Oliver Allen"
+date: "2022-11-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Importing Packages
+```{r}
+library(tidyverse)
+library(NetworkInference)
+library(igraph)
+```
+Getting data into cascades format. Here a node is a blog, a cascade is a tag, and an event is a blog posting a tradwife tag
+```{r}
+cascades <- read_csv("cascades.csv")%>%
+  mutate(time_posted = as.character(time_posted))%>%
+  mutate(time_posted = as.POSIXct(time_posted,tz=Sys.timezone()))%>%
+  select("blog_name", "time_posted", "cascade_id")
+
+blog_names <- cascades["blog_name"]
+
+tag_cascades <- as_cascade_long(cascades, cascade_node_name = "blog_name", event_time = "time_posted")
+```
+```{r}
+summary(tag_cascades)
+```
+```{r}
+plot(tag_cascades, label_nodes = FALSE)
+```
+
+
+```{r}
+results <- netinf(tag_cascades, trans_mod = "exponential", p_value_cutoff = 0.05)
+```
+```{r}
+plot(results, type = "improvement")
+```
+```{r}
+plot(results, type = "network")
+```
+
