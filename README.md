@@ -4,7 +4,7 @@ Analysis of the cottagecore to tradwife pipeline on tumblr
 This repo has two phases, one analysis done in 2022 and a more recent data collection that is ongoing in 2024
 
 The repo is organized as follows
-- Data - data files
+- Data - data files (most are not included in the repo due to size constraints)
 - Gephi - Gephi files used for visualization
 - Images - Any visuals saved from analysis
 - Notebooks - Jupyter notebooks with analysis
