@@ -99,7 +99,7 @@ dictionary = {
 i = 0
 pickle_directories = sys.argv[
     1:
-]  # /home/mel/Desktop/repos/cottagecore_tradfem_pipeline/pickle_files_collection2
+]  # /home/mel/Desktop/repos/cottagecore_tradfem_pipeline/pickle_files/collection2
 for folder in pickle_directories:
     picklefiles = os.listdir(folder)
     for file in picklefiles:
@@ -114,8 +114,9 @@ for folder in pickle_directories:
 print("saving to pickle file...")
 df = pd.DataFrame.from_dict(dictionary)
 df.to_pickle(
-    "/home/mel/Desktop/repos/cottagecore_tradfem_pipeline/Cottagecore_Tradwife_Pipeline/data/full_data2.pkl",
+    "/home/mel/Desktop/repos/cottagecore_tradfem_pipeline/pickle_files/full_data2.pkl",
     compression="infer",
     protocol=5,
     storage_options=None,
 )
+print("saved to file")
